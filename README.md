@@ -60,31 +60,31 @@ terraform-capstone/
 | Staging     | t2.medium         | stg-bucket           | stg-table            |  
 | Production   | t2.large          | prod-bucket          | prod-table           |  
 
-🔧 Troubleshooting
-Issue: "Provider AWS not found"
+## 🔧 Troubleshooting
+# Issue: "Provider AWS not found"
 Solution: Run terraform init to download the AWS provider.
 
-Issue: "Invalid provider version"
+# Issue: "Invalid provider version"
 Solution: Update AWS provider version in terraform.tf or run:
 
-bash
+# bash
 terraform init -upgrade
 Issue: "Workspace does not exist"
 Solution: Create the workspace first:
 
-bash
+# bash
 terraform workspace new <workspace-name>
 Issue: "Insufficient permissions"
 Solution: Verify AWS credentials:
 
-bash
+# bash
 aws sts get-caller-identity
 Ensure your IAM user has EC2, S3, and DynamoDB permissions.
 
-Issue: "Resource already exists"
+# Issue: "Resource already exists"
 Solution: Check AWS Console for existing resources or:
 
-bash
+# bash
 terraform destroy
 terraform apply
 Issue: "Invalid SSH key"
@@ -92,28 +92,31 @@ Solution: Update the public key in modules/ec2/main.tf:
 
 
 
-✨ Key Features
-1. Multi-Environment Support
+## ✨ Key Features
+
+# 1. Multi-Environment Support
 Dev, Staging, and Production environments
 Independent state per environment using workspaces
 Automatic scaling based on environment
-2. Modular Design
+
+# 2. Modular Design
 Reusable EC2, S3, and DynamoDB modules
 Each module is self-contained with its own variables
 Easy to add new modules
-3. Scalability
+
+# 3. Scalability
 Use count parameter for dynamic resource creation
 Simple variable adjustment for resource scaling
 Supports adding new environments easily
-4. Security
+ # 4. Security
 Security group with SSH, HTTP, and HTTPS access
 Key pair for secure EC2 access
 DynamoDB with PAY_PER_REQUEST billing (no unused capacity)
-5. Naming Convention
+ # 5. Naming Convention
 Environment-based resource naming (e.g., dev-terra-server-1)
 Consistent tagging across all resources
 Easy resource identification in AWS Console
-6. Cost Optimization
+# 6. Cost Optimization
 t3.micro instances (cost-effective)
 Configurable resource counts per environment
 DynamoDB PAY_PER_REQUEST billing
