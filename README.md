@@ -67,24 +67,24 @@ Solution: Run terraform init to download the AWS provider.
 # Issue: "Invalid provider version"
 Solution: Update AWS provider version in terraform.tf or run:
 
-# bash
-terraform init -upgrade
-Issue: "Workspace does not exist"
+# Bash
+terraform init -upgrade \n
+Issue: "Workspace does not exist" \n
 Solution: Create the workspace first:
 
-# bash
-terraform workspace new <workspace-name>
-Issue: "Insufficient permissions"
-Solution: Verify AWS credentials:
+# Bash
+terraform workspace new <workspace-name> \n
+Issue: "Insufficient permissions" \n 
+Solution: Verify AWS credentials: \n 
 
-# bash
-aws sts get-caller-identity
+# Bash
+aws sts get-caller-identity \n 
 Ensure your IAM user has EC2, S3, and DynamoDB permissions.
 
 # Issue: "Resource already exists"
 Solution: Check AWS Console for existing resources or:
 
-# bash
+# Bash
 terraform destroy
 terraform apply
 Issue: "Invalid SSH key"
